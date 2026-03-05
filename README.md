@@ -26,4 +26,4 @@ Se încearcă înregistrarea a două inspecții în aceeași zi pentru aceeași 
 Număr mașini admise / respinse într-o perioadă
 Cele mai frecvente defecte
 Grafic cu rata de promovare lunară
-Lista mașinilor cu ITP expirat
+Lista mașinilor cu ITP expirat.
