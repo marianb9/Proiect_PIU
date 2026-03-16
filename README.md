@@ -6,8 +6,7 @@
 
 Proprietar (nume, CNP, telefon)
 Mașină (marca, model, an fabricație, nr. înmatriculare)
-Inspecție ITP (data, rezultat: Admis/Respins, valabil până la)
-Defecțiuni identificate
+Inspecție ITP (data, rezultat: Admis/Respins, valabil până la, defectiuni)
 Inspector
 
 		--->Funcționalități:
