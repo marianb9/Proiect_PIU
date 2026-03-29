@@ -7,4 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Manager_PIU\Manager_PIU.csproj" />
+    <ProjectReference Include="..\Modele_PIU\Modele_PIU.csproj" />
+  </ItemGroup>
+
 </Project>

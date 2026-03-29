@@ -1,5 +1,6 @@
-﻿using System;
-using Proiect_PIU.models;
+﻿using Modele_PIU.models;
+using Modele_PIU.enums;
+using System;
 using Proiect_PIU.manager;
 
 namespace Proiect_PIU
