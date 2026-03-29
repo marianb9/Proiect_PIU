@@ -1,21 +1,20 @@
-﻿using Modele_PIU.models;
-using Modele_PIU.enums;
-using System;
-using Proiect_PIU.manager;
+﻿using System;
+using Modele_PIU.models;
+using Manager_PIU.manager;
 
 namespace Proiect_PIU
 {
     class Program
     {
         static void Main(string[] args)
-        {
-            ManagerMasini manager = new ManagerMasini();
+        
+            ManagerMasiniFisier manager = new ManagerMasiniFisier();
 
             while (true)
             {
                 Console.WriteLine("\n=== SISTEM GESTIUNE ITP ===");
-                Console.WriteLine("1. Adauga o masina noua (Citire de la tastatura)");
-                Console.WriteLine("2. Afiseaza toate masinile inregistrate");
+                Console.WriteLine("1. Adauga o masina noua (Citire de la tastatura si salvare in fisier)");
+                Console.WriteLine("2. Afiseaza toate masinile (Citire din fisier)");
                 Console.WriteLine("3. Cauta o masina dupa numarul de inmatriculare");
                 Console.WriteLine("0. Iesire");
                 Console.Write("Alege o optiune: ");
@@ -43,7 +42,7 @@ namespace Proiect_PIU
             }
         }
 
-        static void CitireMasinaDeLaTastatura(ManagerMasini manager)
+        static void CitireMasinaDeLaTastatura(ManagerMasiniFisier manager)
         {
             Console.WriteLine("\n--- INTRODUCERE DATE PROPRIETAR ---");
             Console.Write("Nume Proprietar: ");
@@ -74,27 +73,27 @@ namespace Proiect_PIU
             Masina masinaNoua = new Masina(marca, model, an, nrInmat, proprietarNou);
 
             manager.AdaugaMasina(masinaNoua);
-            Console.WriteLine("Masina a fost salvata cu succes!");
+            Console.WriteLine("Masina a fost salvata cu succes IN FISIER!");
         }
 
-        static void AfisareMasini(ManagerMasini manager)
+        static void AfisareMasini(ManagerMasiniFisier manager)
         {
             var masini = manager.GetToateMasinile();
 
             if (masini.Count == 0)
             {
-                Console.WriteLine("\nNu exista nicio masina inregistrata in sistem.");
+                Console.WriteLine("\nNu exista nicio masina inregistrata in fisier.");
                 return;
             }
 
             Console.WriteLine("\n--- LISTA MASINI ---");
             foreach (var m in masini)
             {
-                Console.WriteLine($"> Masina: {m.Marca} {m.Model} | An: {m.AnFabricatie} | Nr: {m.NrInmatriculare} | Proprietar: {m.Proprietar.Nume}");
+                Console.WriteLine($"> Masina: {m.Marca} {m.Model} | An: {m.AnFabricatie} | Nr. Inmatriculare: {m.NrInmatriculare}");
             }
         }
 
-        static void CautaMasina(ManagerMasini manager)
+        static void CautaMasina(ManagerMasiniFisier manager)
         {
             Console.Write("\nIntrodu numarul de inmatriculare cautat: ");
             string nrCautat = Console.ReadLine();
@@ -103,11 +102,11 @@ namespace Proiect_PIU
 
             if (masinaGasita != null)
             {
-                Console.WriteLine($"\nMASINA GASITA: {masinaGasita.Marca} {masinaGasita.Model}, an {masinaGasita.AnFabricatie}, apartine lui {masinaGasita.Proprietar.Nume} ({masinaGasita.Proprietar.Telefon}).");
+                Console.WriteLine($"\nMASINA GASITA in fisier: {masinaGasita.Marca} {masinaGasita.Model}, an fabricatie {masinaGasita.AnFabricatie}");
             }
             else
             {
-                Console.WriteLine("\nMasina cu acest numar de inmatriculare nu a fost gasita in sistem.");
+                Console.WriteLine("\nMasina cu acest numar de inmatriculare nu a fost gasita.");
             }
         }
     }
